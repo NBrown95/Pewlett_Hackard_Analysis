@@ -38,3 +38,13 @@ FROM retirement_titles
 ORDER BY emp_no, to_date DESC;
 -- Check status
 SELECT * FROM unique_titles;
+
+-- Count number of employees per title and add to new table
+SELECT COUNT(emp_no), title
+INTO retiring_titles
+FROM unique_titles
+GROUP BY title
+-- Sort by count number in descending order
+ORDER BY COUNT(emp_no) DESC;
+-- Check status
+SELECT * FROM retiring_titles;
