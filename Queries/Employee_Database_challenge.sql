@@ -26,3 +26,15 @@ INNER JOIN title_challenge AS ti
 ON e.emp_no = ti.emp_no
 -- Order by employee number
 ORDER BY e.emp_no;
+
+-- Use Dictinct with Orderby to remove duplicate rows
+SELECT DISTINCT ON (emp_no) emp_no,
+first_name,
+last_name,
+title
+-- Create new table
+INTO unique_titles
+FROM retirement_titles
+ORDER BY emp_no, to_date DESC;
+-- Check status
+SELECT * FROM unique_titles;
