@@ -66,3 +66,10 @@ JOIN titles AS ti
 ON e.emp_no = ti.emp_no;
 -- Check status
 SELECT * FROM mentor;
+
+-- Filtered new table to current employees born in the year 1965
+-- Ordered the table by employee number.
+SELECT * FROM mentor
+WHERE to_date = ('9999-01-01') AND birth_date BETWEEN '1965-01-01' 
+AND '1965-12-31' 
+ORDER BY emp_no;
