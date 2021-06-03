@@ -48,3 +48,21 @@ GROUP BY title
 ORDER BY COUNT(emp_no) DESC;
 -- Check status
 SELECT * FROM retiring_titles;
+
+-- Drop table if necessary
+DROP TABLE IF EXISTS mentor;
+
+-- Join Employees, Department Employees, and Titles tables into one Mentor Table.
+-- Retrieve employee number, names, birth dates, hire dates, and titles.
+-- Use DISTINCT ON to only choose one employee number per employee.
+SELECT DISTINCT ON (e.emp_no) e.emp_no, e.first_name, e.last_name, e.birth_date,
+	   de.from_date, de.to_date, ti.title
+INTO mentor
+-- Use aliases
+FROM employees AS e
+JOIN dept_emp AS de
+ON e.emp_no = de.emp_no
+JOIN titles AS ti
+ON e.emp_no = ti.emp_no;
+-- Check status
+SELECT * FROM mentor;
